@@ -8,11 +8,7 @@ const API_CONFIG = {
     },
     gemini: {
         keys: [
-            'AIzaSyC6jSWqWOHbyHG67zZKDI4cZZ8ybmseurw',
-            'AIzaSyCyFx66GhhBLdxGc319KqeaGhoKp_BhwhQ',
-            'AIzaSyDnQPyQSEQLiWZ5yvoPUijP9oF-ZRCm_Vc',
-            'AIzaSyB5QZQ3llnJTubA8UKP82b_k1hqRCahdB4',
-            'AIzaSyBX-_ERHuecL8U9yLRRIVFAyfGwCN3inZ4'
+           
         ],
         activeKeyIndex: 0
     }
