@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "functions": {
+    "api/app.py": {
+      "runtime": "@vercel/python@4.8.0",
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/analyze",
+      "dest": "/api/app.py"
+    },
+    {
+      "src": "/search",
+      "dest": "/api/app.py"
+    },
+    {
+      "src": "/institute",
+      "dest": "/institute.html"
+    },
+    {
+      "src": "/institute.html",
+      "dest": "/institute.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "installCommand": "pip install -r requirements.txt",
+  "buildCommand": ""
+}

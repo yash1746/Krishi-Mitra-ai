@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroAcademy Institute - Advanced Agricultural Learning Platform</title>
+    <link rel="shortcut icon" href="static/imgs/institute-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/institute-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header" id="header">
+            <div class="container header-content">
+                <div class="brand">
+                    <!-- <div class="brand-icon">
+                        <div class="logo-container">
+                            <i class="fas fa-graduation-cap"></i>
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                    </div> -->
+                    <div class="brand-text">
+                        <h1>Institute</h1>
+                        <p>Advanced Agricultural Learning Platform</p>
+                    </div>
+                </div>
+                
+                <nav class="desktop-nav">
+                    <ul class="nav-list">
+                        <li class="nav-item active"><a href="#home" data-section="home"><i class="fas fa-home"></i> Home</a></li>
+                        <li class="nav-item"><a href="#soil-lab" data-section="soil-lab"><i class="fas fa-flask"></i> Soil Lab</a></li>
+                        <li class="nav-item"><a href="#crop-analysis" data-section="crop-analysis"><i class="fas fa-microscope"></i> Crop Analysis</a></li>
+                        <!-- <li class="nav-item"><a href="#ai-assistant" data-section="ai-assistant"><i class="fas fa-robot"></i> AI Assistant</a></li> -->
+                        <li class="nav-item"><a href="#weather-science" data-section="weather-science"><i class="fas fa-cloud-sun"></i> Weather Science</a></li>
+                        <li class="nav-item"><a href="#learning-hub" data-section="learning-hub"><i class="fas fa-book-open"></i> Learning Hub</a></li>
+                        <li class="nav-item"><a href="#virtual-lab" data-section="virtual-lab"><i class="fas fa-vr-cardboard"></i> Virtual Lab</a></li>
+                        <li class="nav-item"><a href="#" data-section="our-farmers"><i 
+                        class="fas fa-users"></i> Our Farmers</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <!-- <button id="notifications" class="btn-icon" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button> -->
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main">
+            <div class="container">
+                
+                <!-- Hero Section -->
+                <section id="home" class="hero-section section active">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Advanced Agricultural Education</h1>
+                            <p>Unlock the science of agriculture through interactive learning, advanced soil analysis, and AI-powered crop insights designed for the next generation of agricultural professionals.</p>
+                            <div class="hero-stats">
+                                <div class="stat-card">
+                                    <div class="stat-number">500+</div>
+                                    <div class="stat-label">Research Papers</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Crop Varieties</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">25+</div>
+                                    <div class="stat-label">Soil Parameters</div>
+                                </div>
+                            </div>
+                            <div class="hero-actions">
+                                <button class="btn-primary" onclick="navigateToSection('soil-lab')">
+                                    <i class="fas fa-flask"></i> Start Soil Analysis
+                                </button>
+                                <button class="btn-secondary" onclick="navigateToSection('learning-hub')">
+                                    <i class="fas fa-play"></i> Watch Demo
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="hero-animation">
+                                <div class="floating-elements">
+                                    <div class="element dna"><i class="fas fa-dna"></i></div>
+                                    <div class="element leaf"><i class="fas fa-leaf"></i></div>
+                                    <div class="element atom"><i class="fas fa-atom"></i></div>
+                                    <div class="element microscope"><i class="fas fa-microscope"></i></div>
+                                </div>
+                                <div class="central-hub">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Soil Analysis Laboratory -->
+                <section id="soil-lab" class="section soil-lab-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-flask"></i> Advanced Soil Analysis Laboratory</h2>
+                        <p>Comprehensive soil testing and nutrient analysis with scientific precision</p>
+                    </div>
+                    
+                    <div class="lab-dashboard">
+                        <div class="lab-controls">
+                            <div class="card analysis-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-vial"></i> Soil Sample Input</h3>
+                                </div>
+                                <div class="card-content">
+                                    <form id="soil-analysis-form" class="lab-form">
+                                        <div class="form-section">
+                                            <h4>Sample Location</h4>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="sample-location">Geographic Location</label>
+                                                    <input id="sample-location" type="text" placeholder="Enter location coordinates or city" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sample-depth">Sample Depth (cm)</label>
+                                                    <input id="sample-depth" type="number" value="15" min="5" max="100">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-section">
+                                            <h4>Chemical Parameters</h4>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="soil-ph">pH Level</label>
+                                                    <input id="soil-ph" type="number" step="0.1" min="3" max="10" placeholder="6.5">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="organic-carbon">Organic Carbon (%)</label>
+                                                    <input id="organic-carbon" type="number" step="0.01" placeholder="1.2">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="nitrogen">Available Nitrogen (kg/ha)</label>
+                                                    <input id="nitrogen" type="number" step="0.1" placeholder="280">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="phosphorus">Available Phosphorus (kg/ha)</label>
+                                                    <input id="phosphorus" type="number" step="0.1" placeholder="25">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="potassium">Available Potassium (kg/ha)</label>
+                                                    <input id="potassium" type="number" step="0.1" placeholder="180">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sulfur">Sulfur (ppm)</label>
+                                                    <input id="sulfur" type="number" step="0.1" placeholder="12">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-section">
+                                            <h4>Physical Parameters</h4>
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="soil-texture">Soil Texture</label>
+                                                    <select id="soil-texture">
+                                                        <option value="sandy">Sandy</option>
+                                                        <option value="loamy-sand">Loamy Sandy</option>
+                                                        <option value="sandy-loam">Sandy Loamy</option>
+                                                        <option value="loam" selected>Loamy</option>
+                                                        <option value="silt-loam">Silt Loam<y/option>
+                                                        <option value="clay-loam">Clay Loamy </option>
+                                                        <option value="clay">Clay</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="bulk-density">Bulk Density (g/cm³)</label>
+                                                    <input id="bulk-density" type="number" step="0.01" placeholder="1.3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn-primary btn-full">
+                                            <i class="fas fa-microscope"></i> Analyze Soil Sample
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="lab-results">
+                            <div class="card results-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-chart-line"></i> Analysis Results</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div id="soil-results" class="results-container">
+                                        <div class="results-placeholder">
+                                            <i class="fas fa-flask"></i>
+                                            <p>Submit soil parameters to view detailed analysis</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advanced Crop Analysis -->
+                <section id="crop-analysis" class="section crop-analysis-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-microscope"></i> Scientific Crop Analysis</h2>
+                        <p>AI-powered crop recommendations based on comprehensive soil and environmental data</p>
+                    </div>
+                    
+                    <div class="analysis-dashboard">
+                        <div class="crop-results" id="crop-recommendations-container">
+                            <div class="results-placeholder">
+                                <i class="fas fa-seedling"></i>
+                                <p>Complete soil analysis to get scientific crop recommendations</p>
+                                <button class="btn-secondary soil-lab-nav" onclick="navigateToSection('soil-lab')">
+                                    <i class="fas fa-arrow-left"></i> Go to Soil Lab
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- AI Research Assistant -->
+                <!-- <section id="ai-assistant" class="section ai-assistant-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-robot"></i> AI Research Assistant</h2>
+                        <p>Advanced agricultural AI for research, theory, and scientific analysis</p>
+                    </div>
+                    
+                    <div class="ai-interface">
+                        <div class="card chat-card">
+                            <div class="card-content">
+                                <div id="ai-chat-messages" class="chat-messages">
+                                    <div class="message ai-message">
+                                        <div class="message-avatar">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div class="message-content">
+                                            <p>Welcome to the AI Research Assistant! I specialize in advanced agricultural science, soil chemistry, plant pathology, crop genetics, and sustainable farming practices. Ask me about:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="quick-questions">
+                                    <h4>Quick Research Topics:</h4>
+                                    <div class="question-chips">
+                                        <button class="chip" onclick="askQuickQuestion('Explain the nitrogen cycle in agricultural soils')">
+                                            <i class="fas fa-recycle"></i> Nitrogen Cycle
+                                        </button>
+                                        <button class="chip" onclick="askQuickQuestion('What are the molecular mechanisms of drought tolerance in crops?')">
+                                            <i class="fas fa-dna"></i> Drought Tolerance
+                                        </button>
+                                        <button class="chip" onclick="askQuickQuestion('How does soil pH affect nutrient availability?')">
+                                            <i class="fas fa-balance-scale"></i> pH & Nutrients
+                                        </button>
+                                        <button class="chip" onclick="askQuickQuestion('Explain CRISPR applications in crop improvement')">
+                                            <i class="fas fa-edit"></i> CRISPR Technology
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <form id="ai-chat-form" class="chat-form">
+                                    <div class="input-container">
+                                        <input id="ai-chat-input" type="text" placeholder="Ask..." required>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn-icon send-icon-btn"><i class="fas fa-paper-plane"></i></button>
+                                            <button type="button" class="btn-icon"><i class="fas fa-image"></i></button>
+                                            <button type="button" class="btn-icon"><i class="fas fa-microphone"></i></button>
+                                            <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+                                            <input type="file" id="photo-capture" accept="image/*" capture="environment" style="display: none;">
+                                        </div>
+                                    </div>
+                                    <input id="research-upload" type="file" accept=".pdf,.doc,.docx" style="display: none;">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+
+                <!-- Weather Science Station -->
+                <section id="weather-science" class="section weather-science-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cloud-sun"></i> Weather Science Station</h2>
+                        <p>Comprehensive meteorological data analysis for agricultural applications</p>
+                    </div>
+                    
+                    <div class="weather-dashboard">
+                        <div class="weather-overview">
+                            <div class="card weather-current-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-thermometer-half"></i> Current Conditions</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="weather-display" id="current-weather">
+                                        <div class="weather-main">
+                                            <div class="weather-icon">
+                                                <i class="fas fa-sun"></i>
+                                            </div>
+                                            <div class="weather-info">
+                                                <div class="temperature">24°C</div>
+                                                <div class="condition">Clear Sky</div>
+                                                <div class="location">Loading location...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="weather-analytics">
+                            <div class="card weather-params-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-chart-area"></i> Agricultural Parameters</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="param-grid" id="weather-parameters">
+                                        <div class="param-card">
+                                            <div class="param-icon"><i class="fas fa-tint"></i></div>
+                                            <div class="param-info">
+                                                <div class="param-label">Humidity</div>
+                                                <div class="param-value">65%</div>
+                                                <div class="param-status optimal">Optimal</div>
+                                            </div>
+                                        </div>
+                                        <div class="param-card">
+                                            <div class="param-icon"><i class="fas fa-wind"></i></div>
+                                            <div class="param-info">
+                                                <div class="param-label">Wind Speed</div>
+                                                <div class="param-value">12 km/h</div>
+                                                <div class="param-status good">Good</div>
+                                            </div>
+                                        </div>
+                                        <div class="param-card">
+                                            <div class="param-icon"><i class="fas fa-eye"></i></div>
+                                            <div class="param-info">
+                                                <div class="param-label">Visibility</div>
+                                                <div class="param-value">10 km</div>
+                                                <div class="param-status excellent">Excellent</div>
+                                            </div>
+                                        </div>
+                                        <div class="param-card">
+                                            <div class="param-icon"><i class="fas fa-weight"></i></div>
+                                            <div class="param-info">
+                                                <div class="param-label">Pressure</div>
+                                                <div class="param-value">1013 hPa</div>
+                                                <div class="param-status normal">Normal</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Learning Hub -->
+                <section id="learning-hub" class="section learning-hub-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-book-open"></i> Agricultural Learning Hub</h2>
+                        <p>Comprehensive educational resources and interactive learning modules</p>
+                    </div>
+                    
+                    <div class="learning-content">
+                        <div class="course-grid">
+                            <div class="card course-card">
+                                <div class="course-image">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Soil Science Fundamentals</h3>
+                                    <p>Comprehensive study of soil formation, classification, and chemical properties</p>
+                                    <div class="course-meta">
+                                        <span class="duration"><i class="fas fa-clock"></i> 8 hours</span>
+                                        <span class="difficulty"><i class="fas fa-signal"></i> Intermediate</span>
+                                    </div>
+                                    <button class="btn-primary btn-full">
+                                        <i class="fas fa-play"></i> Start Course
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card course-card">
+                                <div class="course-image">
+                                    <i class="fas fa-dna"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Plant Genetics & Breeding</h3>
+                                    <p>Advanced concepts in plant breeding, molecular markers, and genetic modification</p>
+                                    <div class="course-meta">
+                                        <span class="duration"><i class="fas fa-clock"></i> 12 hours</span>
+                                        <span class="difficulty"><i class="fas fa-signal"></i> Advanced</span>
+                                    </div>
+                                    <button class="btn-primary btn-full">
+                                        <i class="fas fa-play"></i> Start Course
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card course-card">
+                                <div class="course-image">
+                                    <i class="fas fa-bug"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Integrated Pest Management</h3>
+                                    <p>Sustainable approaches to pest control using biological and chemical methods</p>
+                                    <div class="course-meta">
+                                        <span class="duration"><i class="fas fa-clock"></i> 6 hours</span>
+                                        <span class="difficulty"><i class="fas fa-signal"></i> Intermediate</span>
+                                    </div>
+                                    <button class="btn-primary btn-full">
+                                        <i class="fas fa-play"></i> Start Course
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card course-card">
+                                <div class="course-image">
+                                    <i class="fas fa-satellite"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Precision Agriculture</h3>
+                                    <p>Technology-driven farming using GPS, sensors, and data analytics</p>
+                                    <div class="course-meta">
+                                        <span class="duration"><i class="fas fa-clock"></i> 10 hours</span>
+                                        <span class="difficulty"><i class="fas fa-signal"></i> Advanced</span>
+                                    </div>
+                                    <button class="btn-primary btn-full">
+                                        <i class="fas fa-play"></i> Start Course
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Virtual Laboratory -->
+                <section id="virtual-lab" class="section virtual-lab-section">
+                    <div class="section-header">
+                        <h2><i class="fas fa-vr-cardboard"></i> Virtual Agricultural Laboratory</h2>
+                        <p>Interactive simulations and virtual experiments for hands-on learning</p>
+                    </div>
+                    
+                    <div class="virtual-lab-content">
+                        <div class="lab-grid">
+                            <div class="card lab-experiment-card">
+                                <div class="experiment-preview">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Soil pH Testing Simulation</h3>
+                                    <p>Virtual laboratory experiment for soil pH determination using different methods</p>
+                                    <div class="experiment-meta">
+                                        <span class="duration"><i class="fas fa-stopwatch"></i> 30 min</span>
+                                        <span class="complexity"><i class="fas fa-layer-group"></i> Basic</span>
+                                    </div>
+                                    <button class="btn-primary btn-full" onclick="startExperiment('soil-ph')">
+                                        <i class="fas fa-play"></i> Start Experiment
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card lab-experiment-card">
+                                <div class="experiment-preview">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Plant Cell Analysis</h3>
+                                    <p>Microscopic examination of plant cell structures and organelles</p>
+                                    <div class="experiment-meta">
+                                        <span class="duration"><i class="fas fa-stopwatch"></i> 45 min</span>
+                                        <span class="complexity"><i class="fas fa-layer-group"></i> Intermediate</span>
+                                    </div>
+                                    <button class="btn-primary btn-full" onclick="startExperiment('plant-cell')">
+                                        <i class="fas fa-play"></i> Start Experiment
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="card lab-experiment-card">
+                                <div class="experiment-preview">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="card-content">
+                                    <h3>Photosynthesis Simulation</h3>
+                                    <p>Interactive model of photosynthesis process and environmental factors</p>
+                                    <div class="experiment-meta">
+                                        <span class="duration"><i class="fas fa-stopwatch"></i> 1 hour</span>
+                                        <span class="complexity"><i class="fas fa-layer-group"></i> Advanced</span>
+                                    </div>
+                                    <button class="btn-primary btn-full" onclick="startExperiment('photosynthesis')">
+                                        <i class="fas fa-play"></i> Start Experiment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="our-farmers" class="section">
+                    <div class="container">
+                        <div class="section-header">
+                            <h2><i class="fas fa-users"></i> Our Farmers</h2>
+                            <p>Meet our community of dedicated agricultural professionals contributing to sustainable farming practices.</p>
+                        </div>
+                        <div id="farmers-grid" class="farmer-grid"></div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-item" data-section="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="mobile-nav-item" data-section="soil-lab">
+                <i class="fas fa-flask"></i>
+                <span>Soil</span>
+            </div>
+            <div class="mobile-nav-item" data-section="crop-analysis">
+                <i class="fas fa-microscope"></i>
+                <span>Crops</span>
+            </div>
+            <div class="mobile-nav-item" data-section="weather-science">
+                <i class="fas fa-cloud-sun"></i>
+                <span>Weather</span>
+            </div>
+            <div class="mobile-nav-item" data-section="learning-hub">
+                <i class="fas fa-book-open"></i>
+                <span>Learning</span>
+            </div>
+            <div class="mobile-nav-item" data-section="virtual-lab">
+                <i class="fas fa-vr-cardboard"></i>
+                <span>Virtual</span>
+            </div>
+            <div class="mobile-nav-item" data-section="our-farmers">
+                <i class="fas fa-users"></i>
+                <span>Farmers</span>
+            </div>
+        </nav>
+
+        <!-- Toast Container -->
+        <div id="toast-container" class="toast-container"></div>
+
+        <!-- Experiment Modal -->
+        <div id="experiment-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="experiment-title">Virtual Experiment</h3>
+                    <button class="modal-close" onclick="closeExperiment()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="experiment-content">
+                    <!-- Experiment content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/institute-script.js"></script>
+    <!-- <script src="/static/js/jdfnkjdjnkf.js"></script> -->
+</body>
+</html>

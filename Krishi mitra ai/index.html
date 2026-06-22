@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KrishiMitra AI - Smart Farming Assistant</title>
+  <link rel="shortcut icon" href="static/imgs/krishimitra.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <script type="module" src="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent"></script>
+  <link rel="manifest" href="public/manifest.json">
+  <!-- EmailJS Integration for Client-Side Alerts -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header" id="header">
+      <div class="container header-content">
+        <div class="brand">
+          <div class="brand-icon mobile-hide">
+            <a href="https://krishimitraai.vercel.app"><img src="/static/imgs/krishimitra.png" alt=""></a>
+          </div>
+          <div class="brand-text desktop-hide">
+            <h1>KrishiMitra AI</h1>
+            <p>Smart Farming Assistant</p>
+          </div>
+        </div>
+        <nav class="desktop-nav desktop-only">
+          <ul class="nav-list">
+            <!-- <li class="nav-item"><a href="#home" data-section="home"><i class="fas fa-home"></i> Home</a></li> -->
+            <li class="nav-item"><a href="#recommendations" data-section="recommendations"><i class="fas fa-seedling"></i> Crops</a></li>
+            <li class="nav-item"><a href="#chatbot" data-section="chatbot"><i class="fas fa-comments"></i> Chatbot</a></li>
+            <li class="nav-item"><a href="#marketplace" data-section="marketplace"><i class="fas fa-store"></i> Market</a></li>
+            <li class="nav-item"><a href="#weather" data-section="weather"><i class="fas fa-cloud"></i> Weather</a></li>
+            <li class="nav-item"><a href="#profile" data-section="profile"><i class="fas fa-user"></i> Profile</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <select id="language-toggle" class="btn-ghost language-select notranslate" aria-label="Select Language">
+              <option value="en">English</option>
+              <option value="as">Assamese</option>
+              <option value="bn">Bengali</option>
+              <option value="gu">Gujarati</option>
+              <option value="hi">Hindi</option>
+              <option value="kn">Kannada</option>
+              <option value="ks">Kashmiri</option>
+              <option value="kok">Konkani</option>
+              <option value="ml">Malayalam</option>
+              <option value="mni">Manipuri</option>
+              <option value="mr">Marathi</option>
+              <option value="ne">Nepali</option>
+              <option value="or">Odia</option>
+              <option value="pa">Punjabi</option>
+              <option value="sd">Sindhi</option>
+              <option value="ta">Tamil</option>
+              <option value="te">Telugu</option>
+              <option value="ur">Urdu</option>
+          </select>
+          <button id="theme-toggle" class="btn-ghost" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+          </button>
+          <!-- <button id="voice-command-toggle">Start Voice Commands</button> -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main">
+      <div class="container">
+
+        <!-- Hero section -->
+        <section id="home" class="hero section hide">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1>Smart Farming with KrishiMitra AI</h1>
+              <p>Boost your farm's yield with AI-powered crop recommendations based on soil, weather, and market trends.</p>
+              <button class="btn-primary" onclick="scrollToSection('recommendations')">
+                <i class="fas fa-rocket"></i> Start Analysis
+              </button>
+            </div>
+            <div class="hero-image">
+              <a><img src="/static/imgs/farm.jpg" alt=""></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Combined Soil Analysis and Crop Recommendations -->
+        <section id="recommendations" class="section market-section hide">
+          <div class="card analysis-card">
+            <div class="card-header">
+              <h3><i class="fas fa-vial"></i> Crop Recommendation</h3>
+            </div>
+            <div class="card-content">
+              <form id="soil-form" class="form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="location">Farm Location</label>
+                    <input id="location" name="location" type="text" placeholder="Enter city or region" required aria-label="Farm Location">
+                  </div>
+                  <div class="form-group">
+                    <label for="last-crop">Last Crop Grown</label>
+                    <input id="last-crop" name="last-crop" type="text" placeholder="e.g., Wheat" aria-label="Last Crop Grown">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="farm-size">Farm Size</label>
+                    <input id="farm-size" name="farm-size" type="number" placeholder="Enter size" step="0.1" required aria-label="Farm Size">
+                  </div>
+                  <div class="form-group">
+                    <label for="farm-size-unit">Unit</label>
+                    <select id="farm-size-unit" name="farm-size-unit" required aria-label="Farm Size Unit">
+                      <option value="Acre">Acre</option>
+                      <option value="Bigha">Bigha</option>
+                      <option value="Yard">Yard</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn-primary btn-full">
+                  <i class="fas fa-leaf"></i> Analyze & Get Recommendations
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="recommendations-section analyze-show">
+            <h2><i class="fas fa-seedling"></i>Recommended Crops for Your Farm</h2>
+            <div class="crop-grid">
+              <!-- JS will populate crop cards here -->
+            </div>
+            <button class="btn-primary btn-full detailed-plan-btn" onclick="openPdf()">
+                <i class="fas fa-info-circle"></i>
+                View Detailed Plan
+            </button>
+          </div>
+        </section>
+
+        <!-- AI Crop Advisor -->
+        <section id="chatbot" class="section active hide chatbot-section">
+          <div class="card chat-card">
+            <div class="card-header">
+              <h3><i class="fas fa-robot"></i> AI Crop Advisor</h3>
+            </div>
+            <div class="card-content">
+              <div id="chat-messages" class="chat-messages">
+                <div class="message ai-message">
+                  <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                  <div class="message-content">
+                    <p>Hello! I'm your AI farming assistant. Ask me about crop recommendations, pest control, irrigation, or any farming questions!</p>
+                  </div>
+                </div>
+              </div>
+              <div id="image-preview-container" style="margin-bottom: 10px;"></div>
+              <form id="chat-form" class="chat-form">
+                <input id="chat-input" type="text" placeholder="Ask about crops, soil, or weather..." aria-label="Chat Input">
+                <div class="chat-form-buttons">
+                  <button id="photo-button" type="button" class="btn-ghost" aria-label="Upload Photo">
+                    <i class="fas fa-camera"></i>
+                  </button>
+                  <input id="photo-upload" class="choose-file" type="file" accept="image/*">
+                  <input id="photo-capture" class="choose-file" type="file" accept="image/*" capture="environment">
+                  <button id="speech-button" type="button" class="btn-ghost" aria-label="Speech Input">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  <button type="submit" class="btn-primary" aria-label="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>     
+
+        <!-- Weather Forecast -->
+        <section id="weather" class="section hide">
+          <div class="card weather-card">
+            <div class="card-header">
+              <h3><i class="fas fa-cloud-sun"></i> Weather Forecast</h3>
+            </div>
+            <div class="card-content">
+              <div id="weather-widget" class="weather-widget">
+                <div class="weather-current">
+                  <div class="weather-icon"><i class="fas fa-sun"></i></div>
+                  <div class="weather-info">
+                    <div class="temperature">24°C</div>
+                    <div class="condition">Sunny</div>
+                    <div class="location">Loading location...</div>
+                  </div>
+                </div>
+                <div class="weather-details">
+                  <div class="weather-detail">
+                    <i class="fas fa-tint"></i>
+                    <span>Humidity</span>
+                    <span>65%</span>
+                  </div>
+                  <div class="weather-detail">
+                    <i class="fas fa-wind"></i>
+                    <span>Wind</span>
+                    <span>12 km/h</span>
+                  </div>
+                  <div class="weather-detail">
+                    <i class="fas fa-cloud-rain"></i>
+                    <span>Rainfall</span>
+                    <span>0 mm</span>
+                  </div>
+                </div>
+                <!-- New Static 5-Day Forecast Section -->
+                <div id="weekly-forecast" class="weekly-forecast">
+                  <h3>5-Day Forecast</h3>
+                  <div id="forecast-days"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Marketplace Section -->
+        <section id="marketplace" class="section market-section hide">
+          <h3 class="marketplace-text"><i class="fas fa-store"></i> Marketplace</h3>
+          <div class="marketplace-container">
+            <!-- Buy Card -->
+            <div class="card marketplace-card">
+              <div class="card-header">
+                <h3><i class="fas fa-shopping-cart"></i> Buy Products</h3>
+              </div>
+              <div class="card-content">
+                <!-- <div class="marketplace-actions">
+                  <button id="buy-button" class="btn-primary" aria-label="Open Buy Form">
+                    <i class="fas fa-plus"></i> Add Buy Request
+                  </button>
+                </div> -->
+                <div id="buy-form" class="market-form hidden">
+                  <form id="buy-form-submit" class="form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="buy-product">Product</label>
+                        <input id="buy-product" type="text" placeholder="e.g., Fertilizer" required aria-label="Product to Buy">
+                      </div>
+                      <div class="form-group">
+                        <label for="buy-quantity">Quantity</label>
+                        <input id="buy-quantity" type="number" placeholder="e.g., 50" required aria-label="Quantity to Buy">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="buy-price">Price ($)</label>
+                      <input id="buy-price" type="number" step="0.01" placeholder="e.g., 25.00" required aria-label="Price to Buy">
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">
+                      <i class="fas fa-check"></i> Submit Purchase
+                    </button>
+                    <button type="button" class="btn-ghost btn-full" onclick="toggleForm('buy-form')">
+                      <i class="fas fa-times"></i> Cancel
+                    </button>
+                  </form>
+                </div>
+                <div class="market-list">
+                  <h4>Available for Purchase</h4>
+                  <ul id="buy-list" class="market-list-items">
+                    <li class="market-item">Fertilizer - 50kg - ₹25 <button class="btn-ghost btn-small buy-now" data-product="Fertilizer" data-quantity="50" data-price="25">Buy Now</button></li>
+                    <li class="market-item">Seeds (Wheat) - 10kg - ₹15 <button class="btn-ghost btn-small buy-now" data-product="Seeds (Wheat)" data-quantity="10" data-price="15">Buy Now</button></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sell Card -->
+            <div class="card marketplace-card">
+              <div class="card-header">
+                <h3><i class="fas fa-hand-holding"></i> Sell Products</h3>
+              </div>
+              <div class="card-content">
+                <div class="marketplace-actions">
+                  <button id="sell-button" class="btn-primary" aria-label="Open Sell Form">
+                    <i class="fas fa-plus"></i> Add Sell Listing
+                  </button>
+                </div>
+                <div id="sell-form" class="market-form hidden">
+                  <form id="sell-form-submit" class="form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="sell-product">Product</label>
+                        <input id="sell-product" type="text" placeholder="e.g., Wheat" required aria-label="Product to Sell">
+                      </div>
+                      <div class="form-group">
+                        <label for="sell-quantity">Quantity</label>
+                        <input id="sell-quantity" type="number" placeholder="e.g., 100" required aria-label="Quantity to Sell">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="sell-price">Price (₹)</label>
+                      <input id="sell-price" type="number" step="0.01" placeholder="e.g., 20.00" required aria-label="Price to Sell">
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">
+                      <i class="fas fa-check"></i> List for Sale
+                    </button>
+                    <button type="button" class="btn-ghost btn-full" onclick="toggleForm('sell-form')">
+                      <i class="fas fa-times"></i> Cancel
+                    </button>
+                  </form>
+                </div>
+                <div class="market-list">
+                  <h4>Listed for Sale</h4>
+                  <ul id="sell-list" class="market-list-items">
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Buy Now Popup -->
+          <div id="buy-now-popup" class="popup hidden">
+            <div class="popup-content">
+              <div class="card popup-card">
+                <div class="card-header">
+                  <h3><i class="fas fa-shopping-cart"></i> Seller Details</h3>
+                </div>
+                <div class="card-content">
+                  <div class="popup-detail">
+                    <span class="label">Product:</span>
+                    <span id="popup-product" class="value"></span>
+                  </div>
+                  <div class="popup-detail">
+                    <span class="label">Quantity:</span>
+                    <span id="popup-quantity" class="value"></span>
+                  </div>
+                  <div class="popup-detail">
+                    <span class="label">Price:</span>
+                    <span id="popup-price" class="value"></span>
+                  </div>
+                  <div class="popup-detail">
+                    <span class="label">Seller Name:</span>
+                    <span id="popup-seller-name" class="value"></span>
+                  </div>
+                  <div class="popup-detail">
+                    <span class="label">Mobile Number:</span>
+                    <span id="popup-seller-mobile" class="value"></span>
+                  </div>
+                  <div class="popup-detail">
+                    <span class="label">Address:</span>
+                    <span id="popup-seller-address" class="value"></span>
+                  </div>
+                  <button type="button" class="btn-ghost btn-full" onclick="closePopup('buy-now-popup')">
+                    <i class="fas fa-times"></i> Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="profile" class="profile-section hidden">
+            <div class="container">
+                <!-- New Farm Profile Card -->
+                <div class="card profile-card farm-profile-card show">
+                    <div class="card-header">
+                        <h3><i class="fas fa-seedling"></i> Farm Profile</h3>
+                    </div>
+                    <div class="card-content">
+                        <!-- Top Metrics Row -->
+                        <div class="farm-metrics" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                            <div class="metric-card" style="background: var(--muted); border-radius: var(--radius); padding: 1rem; text-align: center;">
+                                <h4>Overall Farm Health</h4>
+                                <div class="progress" style="background: var(--border); height: 6px; border-radius: 3px; margin: 0.5rem 0;">
+                                    <div style="width: 87%; background: var(--gradient-primary); height: 100%; border-radius: 3px;"></div>
+                                </div>
+                                <p style="font-size: 1.2rem; font-weight: 700;">87/100</p>
+                                <span style="color: var(--success); font-weight: 500;">Excellent</span>
+                            </div>
+                            <div class="metric-card" style="background: var(--muted); border-radius: var(--radius); padding: 1rem; text-align: center;">
+                                <h4>Soil Quality</h4>
+                                <div class="progress" style="background: var(--border); height: 6px; border-radius: 3px; margin: 0.5rem 0;">
+                                    <div style="width: 92%; background: var(--gradient-primary); height: 100%; border-radius: 3px;"></div>
+                                </div>
+                                <p style="font-size: 1.2rem; font-weight: 700;">92/100</p>
+                                <span style="color: var(--success); font-weight: 500;">Excellent</span>
+                            </div>
+                            <div class="metric-card" style="background: var(--muted); border-radius: var(--radius); padding: 1rem; text-align: center;">
+                                <h4>Crop Vitality</h4>
+                                <div class="progress" style="background: var(--border); height: 6px; border-radius: 3px; margin: 0.5rem 0;">
+                                    <div style="width: 78%; background: var(--gradient-accent); height: 100%; border-radius: 3px;"></div>
+                                </div>
+                                <p style="font-size: 1.2rem; font-weight: 700;">78/100</p>
+                                <span style="color: var(--warning); font-weight: 500;">Good</span>
+                            </div>
+                            <div class="metric-card" style="background: var(--muted); border-radius: var(--radius); padding: 1rem; text-align: center;">
+                                <h4>Disease Risk</h4>
+                                <div class="progress" style="background: var(--border); height: 6px; border-radius: 3px; margin: 0.5rem 0;">
+                                    <div style="width: 15%; background: var(--gradient-secondary); height: 100%; border-radius: 3px;"></div>
+                                </div>
+                                <p style="font-size: 1.2rem; font-weight: 700;">15%</p>
+                                <span style="color: var(--success); font-weight: 500;">Low Risk</span>
+                            </div>
+                        </div>
+                        <!-- Bottom Split: Environmental Conditions and Recent Alerts -->
+                        <div class="farm-split" style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+                            <!-- Environmental Conditions -->
+                            <div>
+                                <h4>Environmental Conditions</h4>
+                                <p style="color: var(--muted-foreground); font-size: 0.9rem; margin-bottom: 1rem;">Current weather and environmental factors</p>
+                                <div class="env-item" style="display: flex; justify-content: space-between; align-items: center; background: var(--input); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 0.5rem;">
+                                    <span><i class="fas fa-thermometer-half" style="color: var(--primary); margin-right: 0.5rem;"></i> Temperature</span>
+                                    <span style="font-weight: 500;">Optimal <span style="font-weight: 700;">28°C</span></span>
+                                </div>
+                                <div class="env-item" style="display: flex; justify-content: space-between; align-items: center; background: var(--input); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 0.5rem;">
+                                    <span><i class="fas fa-tint" style="color: var(--primary); margin-right: 0.5rem;"></i> Humidity</span>
+                                    <span style="font-weight: 500;">Good <span style="font-weight: 700;">65%</span></span>
+                                </div>
+                                <div class="env-item" style="display: flex; justify-content: space-between; align-items: center; background: var(--input); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 0.5rem;">
+                                    <span><i class="fas fa-wind" style="color: var(--primary); margin-right: 0.5rem;"></i> Wind Speed</span>
+                                    <span style="font-weight: 500;">Moderate <span style="font-weight: 700;">12 km/h</span></span>
+                                </div>
+                                <div class="env-item" style="display: flex; justify-content: space-between; align-items: center; background: var(--input); border-radius: var(--radius); padding: 0.75rem;">
+                                    <span><i class="fas fa-cloud-rain" style="color: var(--primary); margin-right: 0.5rem;"></i> Last Rainfall</span>
+                                    <span style="font-weight: 500;">Recent <span style="font-weight: 700;">3 days ago</span></span>
+                                </div>
+                            </div>
+                            <!-- Recent Alerts -->
+                            <!-- <div>
+                                <h4>Recent Alerts</h4>
+                                <p style="color: var(--muted-foreground); font-size: 0.9rem; margin-bottom: 1rem;">Important notifications and recommendations</p>
+                                <div class="alert-item" style="background: var(--input); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-exclamation-triangle" style="color: var(--warning); margin-right: 0.5rem;"></i> Nutrient Deficiency Detected<br>
+                                    <span style="color: var(--muted-foreground);">Wheat Field B showing signs of nitrogen deficiency. Action: Apply nitrogen-rich fertilizer</span><br>
+                                    <span style="font-size: 0.8rem; color: var(--muted-foreground);">2 hours ago</span>
+                                </div>
+                                <div class="alert-item" style="background: var(--input); border-radius: var(--radius); padding: 0.75rem; margin-bottom: 0.5rem;">
+                                    <i class="fas fa-tint" style="color: var(--primary); margin-right: 0.5rem;"></i> Irrigation Scheduled<br>
+                                    <span style="color: var(--muted-foreground);">Automatic irrigation will start in 30 minutes. Action: Monitor water levels</span><br>
+                                    <span style="font-size: 0.8rem; color: var(--muted-foreground);">30 minutes ago</span>
+                                </div>
+                                <div class="alert-item" style="background: var(--input); border-radius: var(--radius); padding: 0.75rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Pest Control Effective<br>
+                                    <span style="color: var(--muted-foreground);">Aphid population reduced by 85% in Tomato Field A. Action: Continue monitoring</span><br>
+                                    <span style="font-size: 0.8rem; color: var(--muted-foreground);">6 hours ago</span>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Existing My Profile Card (with toggle added) -->
+                <div class="card profile-card my-profile-card show">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user"></i> My Profile</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="profile-details">
+                            <div class="profile-item">
+                                <span class="label">Farmer Name:</span>
+                                <span class="value" id="profile-name">Granth Kumar</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="label">Email:</span>
+                                <span class="value" id="profile-email">granthkumar2006@gmail.com</span>
+                            </div>
+                            <div class="profile-item">
+                                <span class="label">Notification Email:</span>
+                                <span class="value" id="notification-email">granthkumar2006@gmail.com</span>
+                                <input type="email" id="manual-notification-email" placeholder="Enter email for alerts (optional)" style="width: 200px; padding: 0.25rem; margin-left: 10px; border: 1px solid var(--border); border-radius: var(--radius);">
+                                <button onclick="updateNotificationEmail()" class="btn-ghost btn-small" style="margin-left: 10px;"><i class="fas fa-save"></i> Update</button>
+                            </div>
+                            <div class="profile-item">
+                                <span class="label">Location:</span>
+                                <span class="value" id="profile-address">Delhi, India</span>
+                            </div>
+                            <!-- <div class="profile-item">
+                                <span class="label">Phone Number:</span>
+                                <span class="value" id="profile-phone">9818207968</span>
+                            </div> -->
+                            <!-- New Toggle Button -->
+                            <div class="profile-item" style="justify-content: flex-start; gap: 1rem; align-items: center;">
+                                <label for="have-device" style="font-weight: 500; color: var(--muted-foreground); margin: 0;">Have Device?</label>
+                                <input type="checkbox" id="have-device" class="toggle-switch">
+                            </div>
+                        </div>
+                        <button id="edit-profile" class="btn-primary">Edit Profile</button>
+                        <!-- New My Sell Listings section -->
+                        <div class="sell-listings">
+                            <h3>My Sell Listings</h3>
+                            <ul id="my-sell-list" class="market-list-items"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <nav class="bottom-nav">
+      <!-- <button class="nav-item" data-section="home" aria-label="Home">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </button> -->
+
+      <button class="nav-item" data-section="recommendations" aria-label="Crop Recommendation">
+        <i class="fas fa-leaf"></i>
+        <span>Crops</span>
+      </button>
+
+      <button class="nav-item" data-section="chatbot" aria-label="Chatbot">
+        <i class="fas fa-robot"></i>
+        <span>Chatbot</span>
+      </button> 
+
+      <button class="nav-item" data-section="marketplace" aria-label="Marketplace">
+        <i class="fas fa-store"></i>
+        <span>Market</span>
+      </button>
+
+      <button class="nav-item" data-section="weather" aria-label="Weather">
+        <i class="fas fa-cloud-sun"></i>
+        <span>Weather</span>
+      </button>
+
+      <button class="nav-item" data-section="profile" aria-label="Profile">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+    <!-- Back to Top Button (Desktop) -->
+    <button id="back-to-top" class="btn-primary back-to-top" aria-label="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script type="module" src="https://www.gstatic.com/generativeai/2.0/js/genai.js"></script>
+  <script src="/static/js/script.js"></script>
+  <script src="/static/js/market.js"></script>
+  <script src="/static/js/mobileNav.js"></script>
+  <script src="/static/js/profile.js"></script>
+</body>
+</html>

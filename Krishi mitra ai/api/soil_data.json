@@ -1,0 +1,335 @@
+{
+    "andhra pradesh": {
+        "ph": 7.2,
+        "nitrogen": 320,
+        "phosphorus": 18,
+        "potassium": 220,
+        "organic_carbon": 0.55,
+        "texture": "Red and Laterite",
+        "soil_quality": "medium"
+    },
+    "arunachal pradesh": {
+        "ph": 5.8,
+        "nitrogen": 450,
+        "phosphorus": 12,
+        "potassium": 180,
+        "organic_carbon": 0.85,
+        "texture": "Forest and Mountain",
+        "soil_quality": "high"
+    },
+    "assam": {
+        "ph": 5.5,
+        "nitrogen": 380,
+        "phosphorus": 15,
+        "potassium": 200,
+        "organic_carbon": 0.75,
+        "texture": "Alluvial and Laterite",
+        "soil_quality": "medium"
+    },
+    "bihar": {
+        "ph": 7.0,
+        "nitrogen": 280,
+        "phosphorus": 10,
+        "potassium": 160,
+        "organic_carbon": 0.45,
+        "texture": "Alluvial",
+        "soil_quality": "low"
+    },
+    "chhattisgarh": {
+        "ph": 6.5,
+        "nitrogen": 350,
+        "phosphorus": 8,
+        "potassium": 250,
+        "organic_carbon": 0.60,
+        "texture": "Red and Black",
+        "soil_quality": "medium"
+    },
+    "goa": {
+        "ph": 6.0,
+        "nitrogen": 400,
+        "phosphorus": 20,
+        "potassium": 210,
+        "organic_carbon": 0.70,
+        "texture": "Laterite",
+        "soil_quality": "medium"
+    },
+    "gujarat": {
+        "ph": 7.9,
+        "nitrogen": 300,
+        "phosphorus": 12,
+        "potassium": 240,
+        "organic_carbon": 0.40,
+        "texture": "Alluvial, Black, Desert",
+        "soil_quality": "low"
+    },
+    "haryana": {
+        "ph": 8.1,
+        "nitrogen": 280,
+        "phosphorus": 15,
+        "potassium": 220,
+        "organic_carbon": 0.40,
+        "texture": "Alluvial and Arid",
+        "soil_quality": "medium"
+    },
+    "himachal pradesh": {
+        "ph": 6.2,
+        "nitrogen": 420,
+        "phosphorus": 14,
+        "potassium": 190,
+        "organic_carbon": 0.80,
+        "texture": "Alluvial and Forest",
+        "soil_quality": "high"
+    },
+    "jharkhand": {
+        "ph": 6.0,
+        "nitrogen": 320,
+        "phosphorus": 10,
+        "potassium": 180,
+        "organic_carbon": 0.50,
+        "texture": "Red and Laterite",
+        "soil_quality": "medium"
+    },
+    "karnataka": {
+        "ph": 6.8,
+        "nitrogen": 340,
+        "phosphorus": 16,
+        "potassium": 230,
+        "organic_carbon": 0.50,
+        "texture": "Red and Laterite",
+        "soil_quality": "medium"
+    },
+    "kerala": {
+        "ph": 5.5,
+        "nitrogen": 360,
+        "phosphorus": 12,
+        "potassium": 200,
+        "organic_carbon": 0.65,
+        "texture": "Laterite",
+        "soil_quality": "medium"
+    },
+    "madhya pradesh": {
+        "ph": 7.2,
+        "nitrogen": 400,
+        "phosphorus": 10,
+        "potassium": 300,
+        "organic_carbon": 0.55,
+        "texture": "Black, Red, Alluvial",
+        "soil_quality": "medium"
+    },
+    "maharashtra": {
+        "ph": 7.5,
+        "nitrogen": 320,
+        "phosphorus": 14,
+        "potassium": 220,
+        "organic_carbon": 0.45,
+        "texture": "Black and Red",
+        "soil_quality": "medium"
+    },
+    "manipur": {
+        "ph": 5.9,
+        "nitrogen": 440,
+        "phosphorus": 13,
+        "potassium": 170,
+        "organic_carbon": 0.75,
+        "texture": "Alluvial and Forest",
+        "soil_quality": "high"
+    },
+    "meghalaya": {
+        "ph": 5.4,
+        "nitrogen": 460,
+        "phosphorus": 11,
+        "potassium": 160,
+        "organic_carbon": 0.80,
+        "texture": "Forest and Red",
+        "soil_quality": "high"
+    },
+    "mizoram": {
+        "ph": 5.3,
+        "nitrogen": 480,
+        "phosphorus": 10,
+        "potassium": 150,
+        "organic_carbon": 0.85,
+        "texture": "Forest",
+        "soil_quality": "high"
+    },
+    "nagaland": {
+        "ph": 5.6,
+        "nitrogen": 470,
+        "phosphorus": 12,
+        "potassium": 165,
+        "organic_carbon": 0.80,
+        "texture": "Forest and Alluvial",
+        "soil_quality": "high"
+    },
+    "odisha": {
+        "ph": 6.3,
+        "nitrogen": 300,
+        "phosphorus": 9,
+        "potassium": 210,
+        "organic_carbon": 0.50,
+        "texture": "Red and Laterite",
+        "soil_quality": "low"
+    },
+    "punjab": {
+        "ph": 8.2,
+        "nitrogen": 260,
+        "phosphorus": 25,
+        "potassium": 200,
+        "organic_carbon": 0.40,
+        "texture": "Alluvial",
+        "soil_quality": "medium"
+    },
+    "rajasthan": {
+        "ph": 8.0,
+        "nitrogen": 280,
+        "phosphorus": 10,
+        "potassium": 260,
+        "organic_carbon": 0.35,
+        "texture": "Desert and Alluvial",
+        "soil_quality": "low"
+    },
+    "sikkim": {
+        "ph": 5.7,
+        "nitrogen": 500,
+        "phosphorus": 15,
+        "potassium": 180,
+        "organic_carbon": 0.90,
+        "texture": "Mountain",
+        "soil_quality": "high"
+    },
+    "tamil nadu": {
+        "ph": 7.0,
+        "nitrogen": 310,
+        "phosphorus": 18,
+        "potassium": 240,
+        "organic_carbon": 0.45,
+        "texture": "Red and Laterite",
+        "soil_quality": "medium"
+    },
+    "telangana": {
+        "ph": 7.4,
+        "nitrogen": 330,
+        "phosphorus": 16,
+        "potassium": 230,
+        "organic_carbon": 0.50,
+        "texture": "Black and Red",
+        "soil_quality": "medium"
+    },
+    "tripura": {
+        "ph": 5.8,
+        "nitrogen": 400,
+        "phosphorus": 14,
+        "potassium": 190,
+        "organic_carbon": 0.70,
+        "texture": "Alluvial",
+        "soil_quality": "medium"
+    },
+    "uttar pradesh": {
+        "ph": 7.8,
+        "nitrogen": 250,
+        "phosphorus": 8,
+        "potassium": 180,
+        "organic_carbon": 0.45,
+        "texture": "Alluvial",
+        "soil_quality": "medium"
+    },
+    "uttarakhand": {
+        "ph": 6.8,
+        "nitrogen": 380,
+        "phosphorus": 12,
+        "potassium": 170,
+        "organic_carbon": 0.65,
+        "texture": "Alluvial and Mountain",
+        "soil_quality": "medium"
+    },
+    "west bengal": {
+        "ph": 6.9,
+        "nitrogen": 340,
+        "phosphorus": 25,
+        "potassium": 200,
+        "organic_carbon": 0.75,
+        "texture": "Alluvial and Deltaic",
+        "soil_quality": "high"
+    },
+    "andaman and nicobar islands": {
+        "ph": 6.0,
+        "nitrogen": 420,
+        "phosphorus": 18,
+        "potassium": 210,
+        "organic_carbon": 0.70,
+        "texture": "Forest and Coastal",
+        "soil_quality": "medium"
+    },
+    "chandigarh": {
+        "ph": 7.5,
+        "nitrogen": 290,
+        "phosphorus": 16,
+        "potassium": 220,
+        "organic_carbon": 0.40,
+        "texture": "Alluvial",
+        "soil_quality": "medium"
+    },
+    "dadra and nagar haveli and daman and diu": {
+        "ph": 7.0,
+        "nitrogen": 350,
+        "phosphorus": 15,
+        "potassium": 200,
+        "organic_carbon": 0.50,
+        "texture": "Coastal Alluvial",
+        "soil_quality": "medium"
+    },
+    "delhi": {
+        "ph": 7.6,
+        "nitrogen": 270,
+        "phosphorus": 14,
+        "potassium": 190,
+        "organic_carbon": 0.35,
+        "texture": "Alluvial",
+        "soil_quality": "low"
+    },
+    "jammu and kashmir": {
+        "ph": 7.0,
+        "nitrogen": 360,
+        "phosphorus": 10,
+        "potassium": 160,
+        "organic_carbon": 0.70,
+        "texture": "Loamy and Alluvial",
+        "soil_quality": "medium"
+    },
+    "ladakh": {
+        "ph": 8.5,
+        "nitrogen": 200,
+        "phosphorus": 5,
+        "potassium": 150,
+        "organic_carbon": 0.30,
+        "texture": "Arid and Desert",
+        "soil_quality": "low"
+    },
+    "lakshadweep": {
+        "ph": 7.2,
+        "nitrogen": 280,
+        "phosphorus": 20,
+        "potassium": 250,
+        "organic_carbon": 0.40,
+        "texture": "Coral Sandy",
+        "soil_quality": "low"
+    },
+    "puducherry": {
+        "ph": 7.1,
+        "nitrogen": 300,
+        "phosphorus": 17,
+        "potassium": 230,
+        "organic_carbon": 0.45,
+        "texture": "Coastal Alluvial",
+        "soil_quality": "medium"
+    },
+    "default": {
+        "ph": 7.2,
+        "nitrogen": 320,
+        "phosphorus": 15,
+        "potassium": 220,
+        "organic_carbon": 0.50,
+        "texture": "Loamy",
+        "soil_quality": "medium"
+    }
+}
