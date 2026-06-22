@@ -3,12 +3,12 @@
 // API Configuration
 const API_CONFIG = {
     weather: {
-        key: '8371e0a55f78972661743dbb15d9ae17',
-        url: 'https://api.openweathermap.org/data/2.5/weather'
+        // key: 'wheather api',
+        // url: 'open weather url'
     },
     gemini: {
         keys: [
-           
+           // google gemini api keys.
         ],
         activeKeyIndex: 0
     }
